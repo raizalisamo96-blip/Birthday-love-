@@ -96,6 +96,16 @@ Start Surprise 💖
 <button id="noBtn" onclick="moveNo()">No 😂</button>
 </div>
 
+<div id="surprise">
+<h1>🎁 Birthday Surprise ❤️</h1>
+
+<p>
+Bisma ❤️ tumhare liye ek special surprise hai 🧸✨
+</p>
+
+<h2>💌 Forever Yours, Ali</h2>
+</div>
+
 <script>
 
 let questions = [
@@ -108,7 +118,7 @@ let questions = [
 "❤️ Kya tum phir bhi Ali ko pasand karogi?",
 "🧸 Kya Bubu & Dudu ki team hamesha saath rahegi?",
 "😂 Kya tum meri masti ka jawab masti se dogi?",
-"🎁 Kya tum Ali ke surprise ke liye ready ho?"
+"🎁 Kya tum Ali ke surprise ke liye ready ho?",
   "🥰 Kya tum meri smile ki wajah banti rahogi?",
 "😜 Kya tum Ali ki thodi si pagalpan wali baatein bardasht karogi?",
 "🌹 Kya tum hamari har cute memory yaad rakhogi?",
@@ -128,12 +138,11 @@ current++;
 
 if(current < questions.length){
 document.getElementById("question").innerHTML = questions[current];
-}
 else{
 document.getElementById("question").innerHTML="🎂 Happy Birthday Bisma ❤️";
-}
-}
+document.getElementById("surprise").style.display="block";
 
+  {
 function moveNo(){
 let btn=document.getElementById("noBtn");
 btn.style.position="absolute";
