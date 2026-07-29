@@ -89,5 +89,48 @@ Start Surprise 💖
 <div class="heart">💖</div>
 <div class="heart">💕</div>
 
+<div id="questionBox">
+<h2 id="question">🤭 Kya tum mujhe roz thoda sa tang karne dogi?</h2>
+
+<button onclick="nextQuestion()">Yes ❤️</button>
+<button id="noBtn" onclick="moveNo()">No 😂</button>
+</div>
+
+<script>
+
+let questions = [
+"🤭 Kya tum mujhe roz thoda sa tang karne dogi?",
+"😂 Kya tum meri boring jokes bhi smile ke saath sunogi?",
+"🧸 Kya tum mujhe hamesha apna Bubu bulaane dogi?",
+"🥹 Kya tum meri khushi ka reason banti rahogi?",
+"🌸 Kya tum hamari pyari memories ko sambhal kar rakhogi?",
+"😎 Kya tum maanogi ke Ali thoda sa pagal hai?",
+"❤️ Kya tum phir bhi Ali ko pasand karogi?",
+"🧸 Kya Bubu & Dudu ki team hamesha saath rahegi?",
+"😂 Kya tum meri masti ka jawab masti se dogi?",
+"🎁 Kya tum Ali ke surprise ke liye ready ho?"
+];
+
+let current = 0;
+
+function nextQuestion(){
+current++;
+
+if(current < questions.length){
+document.getElementById("question").innerHTML = questions[current];
+}
+else{
+document.getElementById("question").innerHTML="🎂 Happy Birthday Bisma ❤️";
+}
+}
+
+function moveNo(){
+let btn=document.getElementById("noBtn");
+btn.style.position="absolute";
+btn.style.left=Math.random()*80+"%";
+btn.style.top=Math.random()*80+"%";
+}
+
+</script>
 </body>
 </html>
