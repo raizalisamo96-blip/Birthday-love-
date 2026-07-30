@@ -1,32 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Happy Birthday Bisma ❤️</title>
 
 <style>
-body{
+
+*{
 margin:0;
-height:100vh;
-overflow:hidden;
-background:linear-gradient(135deg,#ff9ecf,#ffd6e8);
+padding:0;
+box-sizing:border-box;
 font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff9ecf,#ffd6e8);
+overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
+height:100vh;
 text-align:center;
 }
 
-.box{
+.box,
+#questionBox,
+#surprise{
 background:white;
 padding:30px;
-border-radius:30px;
-box-shadow:0 0 25px pink;
-width:80%;
-max-width:350px;
+border-radius:25px;
+box-shadow:0 0 25px rgba(255,0,120,.3);
+width:90%;
+max-width:380px;
 }
 
-h1{
-color:#ff4f8b;
+#questionBox,
+#surprise{
+display:none;
+}
+
+h1,h2{
+color:#ff4081;
+margin-bottom:15px;
+}
+
+p{
+margin-bottom:20px;
+font-size:18px;
 }
 
 .bubu{
@@ -36,31 +58,38 @@ animation:jump 1s infinite alternate;
 
 @keyframes jump{
 from{transform:translateY(0);}
-to{transform:translateY(-15px);}
+to{transform:translateY(-12px);}
+}
+
+button{
+background:#ff4081;
+color:white;
+border:none;
+padding:14px 28px;
+border-radius:30px;
+font-size:18px;
+cursor:pointer;
+margin:8px;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.05);
 }
 
 .heart{
 position:absolute;
 font-size:25px;
-animation:fall 5s linear infinite;
+animation:fall 6s linear infinite;
 }
 
 @keyframes fall{
-from{
-top:-10%;
+0%{
+transform:translateY(-100px);
 }
-to{
-top:110%;
+100%{
+transform:translateY(110vh);
 }
-}
-
-button{
-background:#ff4f8b;
-color:white;
-border:none;
-padding:15px 30px;
-border-radius:30px;
-font-size:18px;
 }
 
 </style>
@@ -74,41 +103,54 @@ font-size:18px;
 
 <h1>Happy Birthday Bisma ❤️</h1>
 
-<p>
-Ali has a surprise for you 🎁
-</p>
+<p>Ali has a surprise for you 🎁</p>
 
-<button>
+<button id="startBtn">
 Start Surprise 💖
 </button>
 
 </div>
 
-
 <div class="heart">❤️</div>
 <div class="heart">💖</div>
 <div class="heart">💕</div>
-
 <div id="questionBox">
-<h2 id="question">🤭 Kya tum mujhe roz thoda sa tang karne dogi?</h2>
+
+<h2 id="question">
+🤭 Kya tum mujhe roz thoda sa tang karne dogi?
+</h2>
 
 <button onclick="nextQuestion()">Yes ❤️</button>
+
 <button id="noBtn" onclick="moveNo()">No 😂</button>
+
 </div>
 
 <div id="surprise">
-<h1>🎁 Birthday Surprise ❤️</h1>
 
-<p>
-Bisma ❤️ tumhare liye ek special surprise hai 🧸✨
+<h1>🎉 Happy Birthday Bisma ❤️</h1>
+
+<p id="finalMessage">
+💖 Tum meri zindagi ki sabse pyari muskurahat ho.<br><br>
+
+Allah tumhe hamesha khush rakhe, har dua qubool ho, aur tumhari har wish poori ho. 🌸<br><br>
+
+Thank you for being so special. ❤️<br><br>
+
+🧸 Forever Your Bubu,<br>
+❤️ Ali
 </p>
 
-<h2>💌 Forever Yours, Ali</h2>
 </div>
 
 <script>
 
-let questions = [
+document.getElementById("startBtn").onclick=function(){
+document.querySelector(".box").style.display="none";
+document.getElementById("questionBox").style.display="block";
+}
+
+let questions=[
 "🤭 Kya tum mujhe roz thoda sa tang karne dogi?",
 "😂 Kya tum meri boring jokes bhi smile ke saath sunogi?",
 "🧸 Kya tum mujhe hamesha apna Bubu bulaane dogi?",
@@ -119,38 +161,46 @@ let questions = [
 "🧸 Kya Bubu & Dudu ki team hamesha saath rahegi?",
 "😂 Kya tum meri masti ka jawab masti se dogi?",
 "🎁 Kya tum Ali ke surprise ke liye ready ho?",
-  "🥰 Kya tum meri smile ki wajah banti rahogi?",
-"😜 Kya tum Ali ki thodi si pagalpan wali baatein bardasht karogi?",
-"🌹 Kya tum hamari har cute memory yaad rakhogi?",
+"🥰 Kya tum meri smile ki wajah banti rahogi?",
+"😜 Kya tum Ali ki pagal baatein bardasht karogi?",
+"🌹 Kya tum hamari memories hamesha yaad rakhogi?",
 "💖 Kya tum mujhe dekh kar smile karogi?",
 "🧸 Kya Bubu & Dudu hamesha saath rahenge?",
-"😂 Kya tum meri masti ko enjoy karogi?",
-"✨ Kya tum hamari story ko special banaogi?",
+"😂 Kya tum meri masti enjoy karogi?",
+"✨ Kya tum hamari story special banaogi?",
 "🎀 Kya tum is surprise ko poora dekhogi?",
 "💌 Kya tum Ali ka special message padhogi?",
 "🎂 Kya tum final birthday surprise ke liye ready ho?"
 ];
-let current = 0;
+
+let current=0;
 
 function nextQuestion(){
+
 current++;
 
-if(current < questions.length){
-document.getElementById("question").innerHTML = questions[current];
+if(current<questions.length){
+
+document.getElementById("question").innerHTML=questions[current];
+
+}else{
+
+document.getElementById("questionBox").style.display="none";
+document.getElementById("surprise").style.display="block";
+
 }
-else{
-document.getElementById("questionBox").style.display = "none";
-document.getElementById("surprise").style.display = "block";
-}
+
 }
 
 function moveNo(){
-let btn = document.getElementById("noBtn");
-btn.style.position = "absolute";
-btn.style.left = Math.random()*80 + "%";
-btn.style.top = Math.random()*80 + "%";
-  }
 
+let btn=document.getElementById("noBtn");
+
+btn.style.position="absolute";
+btn.style.left=Math.random()*80+"%";
+btn.style.top=Math.random()*80+"%";
+}
 </script>
+
 </body>
-</html>
+</html>  
