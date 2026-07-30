@@ -130,7 +130,6 @@ let questions = [
 "💌 Kya tum Ali ka special message padhogi?",
 "🎂 Kya tum final birthday surprise ke liye ready ho?"
 ];
-
 let current = 0;
 
 function nextQuestion(){
@@ -138,17 +137,19 @@ current++;
 
 if(current < questions.length){
 document.getElementById("question").innerHTML = questions[current];
-else{
-document.getElementById("question").innerHTML="🎂 Happy Birthday Bisma ❤️";
-document.getElementById("surprise").style.display="block";
-
-  {
-function moveNo(){
-let btn=document.getElementById("noBtn");
-btn.style.position="absolute";
-btn.style.left=Math.random()*80+"%";
-btn.style.top=Math.random()*80+"%";
 }
+else{
+document.getElementById("questionBox").style.display = "none";
+document.getElementById("surprise").style.display = "block";
+}
+}
+
+function moveNo(){
+let btn = document.getElementById("noBtn");
+btn.style.position = "absolute";
+btn.style.left = Math.random()*80 + "%";
+btn.style.top = Math.random()*80 + "%";
+  }
 
 </script>
 </body>
