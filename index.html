@@ -1,156 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Happy Birthday Bisma ❤️</title>
- <style>
-.bubu{
-font-size:60px;
-animation:jump 1s infinite alternate, shake 2s infinite;
-}
-.bubu img{
-width:140px;
-height:auto;
-border-radius:20px;
-display:block;
-margin:auto;
-animation:jump 1s infinite alternate, shake 2s infinite;
-}
-@keyframes jump{
-from{
-transform:translateY(0);
-}
-to{
-transform:translateY(-15px);
-}
-}
 
-@keyframes shake{
-0%{
-transform:rotate(0deg);
-}
-
-50%{
-transform:rotate(8deg);
-}
-
-100%{
-transform:rotate(0deg);
-}
-}
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
+<style>
 body{
-background:linear-gradient(135deg,#ff9ecf,#ffd6e8);
-overflow:hidden;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(#ffd6e7,#fff);
 text-align:center;
+overflow-x:hidden;
 }
 
-.box,
-#questionBox,
-#surprise{
+.box{
+margin:40px auto;
+padding:25px;
+width:85%;
+max-width:400px;
 background:white;
-padding:30px;
 border-radius:25px;
-box-shadow:0 0 25px rgba(255,0,120,.3);
-width:90%;
-max-width:380px;
-}
- #surprise{
-animation:pop .6s ease;
-}
-  
-@keyframes pop{
-0%{
-transform:scale(0.5);
-opacity:0;
+box-shadow:0 0 20px pink;
 }
 
-100%{
-transform:scale(1);
-opacity:1;
-}
-}
-#questionBox,
-#surprise{
-display:none;
+img{
+width:180px;
+border-radius:20px;
 }
 
-h1,h2{
+h1{
 color:#ff4081;
-margin-bottom:15px;
 }
 
 p{
-margin-bottom:20px;
 font-size:18px;
-}
-
-.bubu{
-font-size:60px;
-animation:jump 1s infinite alternate;
-}
-
-@keyframes jump{
-from{transform:translateY(0);}
-to{transform:translateY(-12px);}
+color:#555;
 }
 
 button{
 background:#ff4081;
 color:white;
 border:none;
-padding:14px 28px;
+padding:14px 25px;
 border-radius:30px;
 font-size:18px;
-cursor:pointer;
-margin:8px;
-transition:.3s;
-}
-
-button:hover{
-transform:scale(1.05);
+margin:10px;
 }
 
 .heart{
-position:absolute;
-font-size:25px;
-animation:fall 6s linear infinite;
-}
-.confetti{
-position:absolute;
-font-size:25px;
-animation:confettiFall 4s linear infinite;
+position:fixed;
+font-size:30px;
+animation:fall 5s linear infinite;
 }
 
-@keyframes confettiFall{
-0%{
-transform:translateY(-100px) rotate(0deg);
-}
-
-100%{
-transform:translateY(110vh) rotate(360deg);
-}
-}
 @keyframes fall{
 0%{
-transform:translateY(-100px);
+transform:translateY(-10vh);
 }
 100%{
 transform:translateY(110vh);
 }
+}
+
+.hidden{
+display:none;
 }
 
 </style>
@@ -158,126 +72,120 @@ transform:translateY(110vh);
 
 <body>
 
-<div class="box">
+<div class="box" id="start">
 
-<div class="bubu">
-  <img src="bubududu.jpg" alt="Bubu Dudu">
-</div>
+<img src="bubu1.jpg">
 
 <h1>Happy Birthday Bisma ❤️</h1>
 
-<p>Ali has a surprise for you 🎁</p>
+<p>Ali has a little surprise for you 🎁</p>
 
-<button id="startBtn">
+<button onclick="startSurprise()">
 Start Surprise 💖
 </button>
 
 </div>
 
-<div class="heart">❤️</div>
+ <div class="heart">❤️</div>
 <div class="heart">💖</div>
 <div class="heart">💕</div>
-<div class="confetti">🎉</div>
-<div class="confetti">🎈</div>
-<div class="confetti">✨</div>
-<div class="confetti">💖</div>
-<div class="confetti">🌸</div>
- <div id="questionBox">
 
-<h2 id="question">
-🤭 Kya tum mujhe roz thoda sa tang karne dogi?
-</h2>
+<div class="box hidden" id="story">
 
-<button onclick="nextQuestion()">Yes ❤️</button>
+<h1>💖 For My Special Person Bisma ❤️</h1>
 
-<button id="noBtn" onclick="moveNo()">No 😂</button>
+<img id="bubuPic" src="bubu2.jpg">
 
-</div>
-
-<div id="surprise">
-<div class="bubu">
-  <img src="bubududu.jpg" alt="Bubu Dudu">
-</div>
-
-<h1>🎉 Happy Birthday Bisma ❤️</h1>
-
-<p id="finalMessage">
-💖 Tum meri zindagi ki sabse pyari muskurahat ho.<br><br>
-
-Allah tumhe hamesha khush rakhe, har dua qubool ho, aur tumhari har wish poori ho. 🌸<br><br>
-
-Thank you for being so special. ❤️<br><br>
-
-🧸 Forever Your Bubu,<br>
-❤️ Ali
+<p id="message">
+🤭 Ek choti si surprise story sirf tumhare liye...
 </p>
 
+<button onclick="nextStory()">
+Next ❤️
+</button>
+
 </div>
+
+
+<div class="box hidden" id="videoBox">
+
+<h1>🎥 A Little Memory ❤️</h1>
+
+<video width="100%" controls>
+<source src="video1.mp4" type="video/mp4">
+</video>
+
+<br>
+
+<button onclick="nextStory()">
+Continue 💖
+</button>
+
+</div>
+
+
+<audio id="music" loop>
+<source src="palpal.mp3" type="audio/mpeg">
+</audio>
+
 
 <script>
 
-document.getElementById("startBtn").onclick=function(){
-document.querySelector(".box").style.display="none";
-document.getElementById("questionBox").style.display="block";
-}
+let step=0;
 
-let questions=[
-"🤭 Kya tum mujhe roz thoda sa tang karne dogi?",
-"😂 Kya tum meri boring jokes bhi smile ke saath sunogi?",
-"🧸 Kya tum mujhe hamesha apna Bubu bulaane dogi?",
-"🥹 Kya tum meri khushi ka reason banti rahogi?",
-"🌸 Kya tum hamari pyari memories ko sambhal kar rakhogi?",
-"😎 Kya tum maanogi ke Ali thoda sa pagal hai?",
-"❤️ Kya tum phir bhi Ali ko pasand karogi?",
-"🧸 Kya Bubu & Dudu ki team hamesha saath rahegi?",
-"😂 Kya tum meri masti ka jawab masti se dogi?",
-"🎁 Kya tum Ali ke surprise ke liye ready ho?",
-"🥰 Kya tum meri smile ki wajah banti rahogi?",
-"😜 Kya tum Ali ki pagal baatein bardasht karogi?",
-"🌹 Kya tum hamari memories hamesha yaad rakhogi?",
-"💖 Kya tum mujhe dekh kar smile karogi?",
-"🧸 Kya Bubu & Dudu hamesha saath rahenge?",
-"😂 Kya tum meri masti enjoy karogi?",
-"✨ Kya tum hamari story special banaogi?",
-"🎀 Kya tum is surprise ko poora dekhogi?",
-"💌 Kya tum Ali ka special message padhogi?",
-"🎂 Kya tum final birthday surprise ke liye ready ho?"
+let pics=[
+"bubu1.jpg",
+"bubu2.jpg",
+"bubu3.jpg",
+"bubu4.jpg",
+"bubu5.jpg",
+"bubu6.jpg"
 ];
 
-let current=0;
+let messages=[
+"🌸 Tumhari smile meri favourite cheez hai ❤️",
+"😂 Tumhari hasi hamesha aisi hi rahe",
+"🤗 Kabhi udaas hona to yaad rakhna koi tumhari khushi ki dua karta hai",
+"💖 Tum meri zindagi ki bohot special wajah ho",
+"🤲 Allah tumhe hamesha khush rakhe aur tumhara doctor banne ka sapna poora kare",
+"❤️ Aur promise... hamesha aise hi rehna"
+];
 
-function nextQuestion(){
 
-current++;
+function startSurprise(){
 
-if(current<questions.length){
+document.getElementById("start").style.display="none";
 
-document.getElementById("question").innerHTML=questions[current];
+document.getElementById("story").style.display="block";
 
-}else{
+document.getElementById("music").play();
 
-document.getElementById("questionBox").style.display="none";
-document.getElementById("surprise").style.display="block";
+}
+
+
+function nextStory(){
+
+step++;
+
+if(step < pics.length){
+
+document.getElementById("bubuPic").src=pics[step];
+
+document.getElementById("message").innerHTML=messages[step];
+
+}
+
+else{
+
+document.getElementById("story").style.display="none";
+
+document.getElementById("videoBox").style.display="block";
 
 }
 
 }
 
-function moveNo(){
-
-let btn=document.getElementById("noBtn");
-
-btn.style.position="absolute";
-btn.style.left=Math.random()*80+"%";
-btn.style.top=Math.random()*80+"%";
-}
 </script>
 
- <div class="confetti">🎉</div>
-<div class="confetti">🎈</div>
-<div class="confetti">✨</div>
-<div class="confetti">💖</div>
-<div class="confetti">🌸</div>
-
 </body>
-</html>  
+</html>
