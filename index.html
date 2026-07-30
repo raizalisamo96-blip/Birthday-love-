@@ -90,7 +90,21 @@ position:absolute;
 font-size:25px;
 animation:fall 6s linear infinite;
 }
+.confetti{
+position:absolute;
+font-size:25px;
+animation:confettiFall 4s linear infinite;
+}
 
+@keyframes confettiFall{
+0%{
+transform:translateY(-100px) rotate(0deg);
+}
+
+100%{
+transform:translateY(110vh) rotate(360deg);
+}
+}
 @keyframes fall{
 0%{
 transform:translateY(-100px);
@@ -122,7 +136,12 @@ Start Surprise 💖
 <div class="heart">❤️</div>
 <div class="heart">💖</div>
 <div class="heart">💕</div>
-<div id="questionBox">
+<div class="confetti">🎉</div>
+<div class="confetti">🎈</div>
+<div class="confetti">✨</div>
+<div class="confetti">💖</div>
+<div class="confetti">🌸</div>
+ <div id="questionBox">
 
 <h2 id="question">
 🤭 Kya tum mujhe roz thoda sa tang karne dogi?
