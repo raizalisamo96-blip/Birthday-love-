@@ -2,87 +2,96 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#ffd6e7,#fff5f8);
-overflow-x:hidden;
-text-align:center;
-color:#444;
-}
-
-.hidden{
-display:none;
-}
-
-#loading-screen,
-#cake-scene,
-#main{
-min-height:100vh;
+background:linear-gradient(135deg,#ffd6e7,#fff5fb);
+overflow:hidden;
+height:100vh;
 display:flex;
-flex-direction:column;
 justify-content:center;
 align-items:center;
+}
+
+.screen{
+display:none;
+width:100%;
+height:100vh;
+position:absolute;
+top:0;
+left:0;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
 padding:20px;
 }
 
-h1{
-color:#ff4081;
-margin-bottom:15px;
+.screen.active{
+display:flex;
+}
+
+h1,h2{
+color:#ff2d75;
+margin:15px 0;
+text-shadow:0 0 10px pink;
 }
 
 p{
 font-size:20px;
-margin-bottom:20px;
+color:#444;
+line-height:1.6;
+max-width:700px;
 }
 
 button{
-padding:15px 35px;
+padding:14px 35px;
+font-size:18px;
 border:none;
 border-radius:40px;
-background:#ff4081;
-color:#fff;
-font-size:18px;
+background:#ff4f93;
+color:white;
 cursor:pointer;
+margin-top:20px;
 transition:.3s;
 }
 
 button:hover{
 transform:scale(1.08);
+background:#ff2d75;
+}
+img{
+max-width:220px;
+border-radius:20px;
+box-shadow:0 0 20px rgba(255,105,180,.5);
+margin:15px;
+animation:float 3s ease-in-out infinite;
 }
 
-img{
-max-width:250px;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,.2);
-margin:15px;
-}
-#countdown{
-font-size:70px;
-font-weight:bold;
-color:#ff4081;
-margin:20px;
-animation:pulse 1s infinite;
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
 }
 
 .cake{
 width:220px;
-height:140px;
+height:120px;
 background:#ffb6c1;
 border-radius:20px;
 position:relative;
-margin:25px auto;
-box-shadow:0 8px 20px rgba(0,0,0,.2);
+margin:20px auto;
+box-shadow:0 0 20px pink;
 }
 
 .candle{
 width:12px;
 height:55px;
-background:white;
+background:#fff;
 position:absolute;
-left:50%;
 top:-55px;
+left:50%;
 transform:translateX(-50%);
 }
 
@@ -102,15 +111,9 @@ animation:flicker .5s infinite alternate;
 from{transform:translateX(-50%) scale(1);}
 to{transform:translateX(-50%) scale(1.2);}
 }
-
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.2);}
-100%{transform:scale(1);}
-
-}
 #hearts,
-#flowers{
+#flowers,
+#stars{
 position:fixed;
 top:0;
 left:0;
@@ -122,11 +125,23 @@ z-index:1;
 }
 
 .heart,
-.flower{
+.flower,
+.star{
 position:absolute;
-top:-50px;
-font-size:28px;
+top:-40px;
 animation:fall linear forwards;
+}
+
+.heart{
+font-size:24px;
+}
+
+.flower{
+font-size:24px;
+}
+
+.star{
+font-size:18px;
 }
 
 @keyframes fall{
@@ -138,33 +153,31 @@ opacity:1;
 transform:translateY(110vh) rotate(360deg);
 opacity:0;
 }
-}
-
-#main{
+  }
+#app{
 position:relative;
+width:100%;
+height:100vh;
 z-index:2;
 }
-#bubu,
-#photo{
-animation:float 2.5s ease-in-out infinite;
+
+video{
+width:90%;
+max-width:400px;
+border-radius:20px;
+box-shadow:0 0 20px pink;
+margin:20px;
 }
 
-@keyframes float{
-0%{
-transform:translateY(0);
-}
-50%{
-transform:translateY(-12px);
-}
-100%{
-transform:translateY(0);
-}
+#yesBtn,#noBtn{
+margin:10px;
 }
 
-button:active{
-transform:scale(.95);
+#finalScreen{
+background:linear-gradient(135deg,#ffdde8,#fff);
 }
 
-body::-webkit-scrollbar{
-display:none;
+#finalScreen h1{
+font-size:40px;
+animation:float 2s infinite;
 }
