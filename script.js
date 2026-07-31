@@ -1,50 +1,71 @@
-const startBtn = document.getElementById("startBtn");
-const loadingScreen = document.getElementById("loading-screen");
-const cakeScene = document.getElementById("cake-scene");
-const main = document.getElementById("main");
+const screens = document.querySelectorAll(".screen");
 
-const blowBtn = document.getElementById("blowBtn");
-const countdown = document.getElementById("countdown");
-const flame = document.querySelector(".flame");
+function showScreen(id){
+
+screens.forEach(screen=>{
+
+screen.classList.remove("active");
+
+});
+
+document.getElementById(id).classList.add("active");
+
+}
+
+const startBtn = document.getElementById("startBtn");
+const countText = document.getElementById("countText");
+
+startBtn.onclick = ()=>{
+
+showScreen("countdownScreen");
 
 let count = 3;
 
-startBtn.onclick = () => {
+countText.innerHTML = count;
 
-loadingScreen.classList.add("hidden");
-cakeScene.classList.remove("hidden");
-
-const timer = setInterval(() => {
+let timer = setInterval(()=>{
 
 count--;
 
-if(count > 0){
+if(count>0){
 
-countdown.innerHTML = count;
+countText.innerHTML = count;
 
 }else{
 
 clearInterval(timer);
 
-countdown.innerHTML = "💨 Blow Candle";
+showScreen("cakeScreen");
 
 }
 
 },1000);
 
 };
+const blowBtn = document.getElementById("blowBtn");
+const flame = document.querySelector(".flame");
 
-blowBtn.onclick = () => {
+const song = new Audio("palpal.mp3");
+song.loop = true;
+
+blowBtn.onclick = ()=>{
+
+if(flame){
 
 flame.style.display = "none";
 
-cakeScene.classList.add("hidden");
+}
 
-main.classList.remove("hidden");
+song.play().catch(()=>{});
+
+setTimeout(()=>{
+
+showScreen("storyScreen");
+
+},1200);
 
 };
-
-const photos = [
+const photos=[
 "photo1.jpg",
 "photo2.jpg",
 "photo3.jpg",
@@ -53,203 +74,101 @@ const photos = [
 "photo6.jpg"
 ];
 
-const bubu = [
-"bubu1.jpg",
-"bubu2.jpg",
-"bubu3.jpg",
-"bubu4.jpg",
-"bubu5.jpg",
-"bubu6.jpg"
-];
-
-const messages = [
+const texts=[
 "❤️ Happy Birthday Bisma ❤️",
-"🌸 Tumhari smile sabse pyari hai.",
+"🌸 Tumhari smile meri favourite cheez hai.",
 "🤲 Allah tumhe hamesha khush rakhe.",
 "🩺 Dua hai tum ek kamyab doctor bano.",
-"💖 Tum hamesha muskuraati raho.",
-"🤝 Ye surprise sirf tumhare liye hai."
+"💖 Hamesha aise hi muskuraati rehna.",
+"🤍 Tum bahut special ho."
 ];
 
-let current = 0;
+let current=0;
 
-const photo = document.getElementById("photo");
-const bubuImg = document.getElementById("bubu");
-const text = document.getElementById("text");
-const nextBtn = document.getElementById("nextBtn");
+const photo=document.getElementById("bismaPhoto");
+const story=document.getElementById("storyText");
+const nextBtn=document.getElementById("nextStoryBtn");
 
-text.innerHTML = messages[0];
-
-nextBtn.onclick = () => {
+nextBtn.onclick=()=>{
 
 current++;
 
-if(current >= photos.length){
-current = 0;
+if(current<photos.length){
+
+photo.src=photos[current];
+story.innerHTML=texts[current];
+
+}else{
+
+showScreen("videoScreen");
+
 }
 
-photo.src = photos[current];
-bubuImg.src = bubu[current];
-text.innerHTML = messages[current];
+};
+const videoNextBtn=document.getElementById("videoNextBtn");
+
+videoNextBtn.onclick=()=>{
+
+showScreen("questionScreen");
 
 };
 
-const heartBox = document.getElementById("hearts");
-const flowerBox = document.getElementById("flowers");
+const yesBtn=document.getElementById("yesBtn");
+const noBtn=document.getElementById("noBtn");
 
-function createHeart(){
+yesBtn.onclick=()=>{
 
-let heart = document.createElement("div");
+showScreen("promiseScreen");
 
-heart.className = "heart";
+};
 
-heart.innerHTML = "❤️❤️❤️❤️❤️";
+noBtn.onclick=()=>{
 
-heart.style.left = Math.random()*90 + "%";
-heart.style.animationDuration = (3 + Math.random()*3) + "s";
+noBtn.style.position="absolute";
+noBtn.style.left=Math.random()*250+"px";
+noBtn.style.top=Math.random()*350+"px";
 
-heartBox.appendChild(heart);
+};
+const finalBtn=document.getElementById("finalBtn");
 
+finalBtn.onclick=()=>{
 
-setTimeout(()=>{
+showScreen("finalScreen");
 
-heart.remove();
+createFireworks();
 
-},6000);
+};
 
-}
+function createFireworks(){
 
+for(let i=0;i<40;i++){
 
-function createFlower(){
+let spark=document.createElement("div");
 
-let flower = document.createElement("div");
+spark.innerHTML="✨";
 
-flower.className = "flower";
+spark.style.position="fixed";
+spark.style.left=Math.random()*100+"%";
+spark.style.top=Math.random()*100+"%";
+spark.style.fontSize=(15+Math.random()*20)+"px";
+spark.style.pointerEvents="none";
+spark.style.transition="all 2s ease";
 
-flower.innerHTML = "🌸";
-
-flower.style.left = Math.random()*90 + "%";
-flower.style.animationDuration = (4 + Math.random()*3) + "s";
-
-flowerBox.appendChild(flower);
-
-
-setTimeout(()=>{
-
-flower.remove();
-
-},7000);
-
-}
-
-
-setInterval(createHeart,800);
-
-setInterval(createFlower,1200);
-
-
-// Music start
-
-const song = new Audio("palpal.mp3");
-song.loop = true;
-
-startBtn.addEventListener("click",()=>{
-
-song.play().catch(()=>{});
-
-});
-
-
-// Questions
-
-let questions = [
-
-"Kya tum hamesha smile karogi? ❤️",
-
-"Kya tum apne doctor banne ka sapna pura karogi? 🩺",
-
-"Kya tum mujhe kabhi bhoologi nahi? 🤝",
-
-"Kya tum hamesha khush rahogi? 🌸"
-
-];
-
-
-let qIndex = 0;
-
-
-function showQuestion(){
-
-if(qIndex < questions.length){
-
-alert(questions[qIndex]);
-
-qIndex++;
-
-}
-
-else{
-
-alert("❤️ Promise ho gaya. Hamesha khush rehna Bisma ❤️");
-
-}
-
-}
-// Final surprise message
-
-function finalSurprise(){
-
-alert(
-"❤️ Promise ho gaya Bisma ❤️\n\n" +
-"🤲 Allah tumhe hamesha khush rakhe.\n\n" +
-"🩺 Dua hai tum doctor bano aur apne saare sapne pure karo.\n\n" +
-"🌸 Hamesha smile karti rehna."
-);
-
-}
-
-
-// Extra sparkle animation
-
-function sparkle(){
-
-let star = document.createElement("div");
-
-star.innerHTML = "✨";
-
-star.style.position="fixed";
-star.style.left=Math.random()*100+"%";
-star.style.top="0px";
-star.style.fontSize="25px";
-star.style.animation="fall 4s linear";
-
-document.body.appendChild(star);
-
+document.body.appendChild(spark);
 
 setTimeout(()=>{
 
-star.remove();
+spark.style.opacity="0";
+spark.style.transform="scale(2)";
 
-},4000);
+},100);
+
+setTimeout(()=>{
+
+spark.remove();
+
+},2000);
 
 }
-
-
-setInterval(sparkle,1500);
-
-// Bisma memory video setup
-
-const memoryVideo = document.createElement("video");
-
-memoryVideo.src = "video1.mp4";
-memoryVideo.controls = true;
-memoryVideo.style.width = "90%";
-memoryVideo.style.maxWidth = "400px";
-memoryVideo.style.borderRadius = "20px";
-
-
-function showVideo(){
-
-document.getElementById("main").appendChild(memoryVideo);
 
 }
