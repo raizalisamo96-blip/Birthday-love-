@@ -3,58 +3,153 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Happy Birthday Bisma ❤️</title>
 
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<!-- Loading Screen -->
-<div id="loading-screen">
-    <h1>🎂 Happy Birthday Bisma ❤️</h1>
-    <p>Ek choti si surprise sirf tumhare liye...</p>
-    <button id="startBtn">Start Surprise 💖</button>
+<div id="hearts"></div>
+<div id="flowers"></div>
+<div id="stars"></div>
+
+<div id="app">
+
+<!-- Welcome Screen -->
+<section id="welcome" class="screen active">
+
+<h1>🎉 Happy Birthday Bisma ❤️</h1>
+
+<img id="bubu" src="bubu1.jpg" alt="Bubu">
+
+<p>
+Aaj tumhare liye ek choti si surprise banayi hai 💖
+</p>
+
+<button id="startBtn">
+Start Surprise ❤️
+</button>
+
+</section>
+
+<!-- Countdown Screen -->
+<section id="countdownScreen" class="screen">
+
+<h1 id="countText">
+3
+</h1>
+
+</section>
+
+<!-- Cake Screen -->
+<section id="cakeScreen" class="screen">
+
+<h2>🎂 Make a Wish ❤️</h2>
+
+<div class="cake">
+
+<div class="candle">
+
+<div class="flame"></div>
+
 </div>
 
-<!-- Cake Scene -->
-<div id="cake-scene" class="hidden">
-
-    <h1>🎂 Happy Birthday 🎂</h1>
-
-    <div id="countdown">3</div>
-
-    <div class="cake">
-        <div class="candle">
-            <div class="flame"></div>
-        </div>
-    </div>
-
-    <button id="blowBtn">💨 Blow Candle</button>
-
 </div>
 
-<!-- Main Surprise -->
-<div id="main" class="hidden">
+<button id="blowBtn">
+💨 Blow Candle
+</button>
 
-    <div id="hearts"></div>
-
-    <div id="flowers"></div>
-
-    <h1>❤️ Welcome Bisma ❤️</h1>
-
-    <img id="bubu" src="bubu1.jpg">
-
-    <img id="photo" src="photo1.jpg">
-
-    <p id="text"></p>
-
-    <button id="nextBtn">Next ❤️</button>
+</section>
 
 </div>
+<!-- Story Screen -->
+<section id="storyScreen" class="screen">
 
-<script src="script.js"></script>
+<img id="bismaPhoto" src="photo1.jpg" alt="Bisma">
+
+<img id="bubuStory" src="bubu1.jpg" alt="Bubu">
+
+<h2 id="storyTitle">
+❤️ For My Special Bisma ❤️
+</h2>
+
+<p id="storyText">
+Tumhari smile meri favourite cheez hai. 🌸
+</p>
+
+<button id="nextStoryBtn">
+Next ❤️
+</button>
+
+</section>
+
+<!-- Video Screen -->
+<section id="videoScreen" class="screen">
+
+<h2>🎥 A Special Memory ❤️</h2>
+
+<video id="memoryVideo" controls width="100%">
+<source src="video1.mp4" type="video/mp4">
+</video>
+
+<button id="videoNextBtn">
+Next ❤️
+</button>
+
+</section>
+
+<!-- Question Screen -->
+<section id="questionScreen" class="screen">
+
+<h2>🤭 Ek Chota Sa Question</h2>
+
+<p id="questionText">
+Kya tum hamesha smile karti rahogi? ❤️
+</p>
+
+<button id="yesBtn">Yes ❤️</button>
+<button id="noBtn">No 😅</button>
+
+</section>
+
+<!-- Promise Screen -->
+<section id="promiseScreen" class="screen">
+
+<h2>🤝 Promise</h2>
+
+<p>
+Promise karo hamesha khush rahogi ❤️<br><br>
+
+Apna doctor banne ka sapna zaroor pura karogi 🩺<br><br>
+
+Aur kabhi kisi baat se himmat nahi harogi 💖
+</p>
+
+<button id="finalBtn">
+Final Surprise 🎁
+</button>
+
+</section>
+
+<!-- Final Screen -->
+<section id="finalScreen" class="screen">
+
+<h1>🎉 Happy Birthday Bisma ❤️</h1>
+
+<h2>🩺 Allah tumhe ek kamyab doctor banaye.</h2>
+
+<p>
+🤲 Allah tumhari har dua qabool kare.<br><br>
+🌸 Hamesha muskurati raho.<br><br>
+💖 Have a Beautiful Birthday ❤️
+</p>
+
+    </section>    
+  
+    <script src="script.js"></script>
 
 </body>
-  </html>
+   </html>
